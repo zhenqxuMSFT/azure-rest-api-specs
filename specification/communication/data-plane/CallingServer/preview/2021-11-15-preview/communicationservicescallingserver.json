@@ -783,7 +783,7 @@
         ],
         "summary": "Get the operation status",
         "description": "Get the operation status",
-        "operationId": "Operation_GetOperation",
+        "operationId": "CallConnections_GetOperation",
         "parameters": [
           {
             "name": "callConnectionId",
