@@ -207,6 +207,9 @@
         "responses": {
           "202": {
             "description": "Returns the create call response.",
+            "schema": {
+              "$ref": "#/definitions/CreateCallResult"
+            },
             "headers": {
               "Location": {
                 "description": "Location",
@@ -2378,7 +2381,7 @@
       }
     },
     "CallConnectionState": {
-      "description": "The state of the call connection.",
+      "description": "The call connection state.",
       "enum": [
         "connecting",
         "connected",
@@ -2391,6 +2394,19 @@
       "x-ms-enum": {
         "name": "CallConnectionState",
         "modelAsString": true
+      }
+    },
+    "CreateCallResult": {
+      "description": "The response payload of the create call operation.",
+      "type": "object",
+      "properties": {
+        "callConnectionId": {
+          "description": "The call connection id.",
+          "type": "string"
+        },
+        "callConnectionState": {
+          "$ref": "#/definitions/CallConnectionState"
+        }
       }
     },
     "CallConnectionProperties": {
