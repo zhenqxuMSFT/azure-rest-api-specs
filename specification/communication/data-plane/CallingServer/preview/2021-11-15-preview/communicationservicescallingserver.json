@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2021-11-15-preview",
+    "version": "2021-11-15-Preview",
     "title": "Azure Communication Service Call Automation APIs",
     "description": "Azure Communication Service Call Automation APIs"
   },
@@ -581,6 +581,16 @@
             "description": "Returns the transfer call response.",
             "schema": {
               "$ref": "#/definitions/TransferCallResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "operation-id": {
+                "description": "operation-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -603,7 +613,8 @@
           "Transfer the call to a participant.": {
             "$ref": "./examples/CallConnections_TransferToParticipant.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling/callConnections/{callConnectionId}/:transferToCall": {
@@ -640,6 +651,16 @@
             "description": "Returns the transfer call response.",
             "schema": {
               "$ref": "#/definitions/TransferCallResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "operation-id": {
+                "description": "operation-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -662,7 +683,8 @@
           "Transfer the current call to another call.": {
             "$ref": "./examples/CallConnections_TransferToCall.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling/callConnections/{callConnectionId}/:createAudioRoutingGroup": {
@@ -784,9 +806,9 @@
         "tags": [
           "CallConnection"
         ],
-        "summary": "Get the operation status",
-        "description": "Get the operation status",
-        "operationId": "CallConnections_GetOperation",
+        "summary": "Get the operation result.",
+        "description": "Get the operation result.",
+        "operationId": "CallConnections_GetOperationResult",
         "parameters": [
           {
             "name": "callConnectionId",
@@ -810,13 +832,13 @@
           "200": {
             "description": "Returns the get operation response.",
             "schema": {
-              "$ref": "#/definitions/OperationResponse"
+              "$ref": "#/definitions/OperationResult"
             }
           },
           "202": {
             "description": "Returns the get operation response.",
             "schema": {
-              "$ref": "#/definitions/OperationResponse"
+              "$ref": "#/definitions/OperationResult"
             }
           },
           "400": {
@@ -836,8 +858,8 @@
           }
         },
         "x-ms-examples": {
-          "Get the operation status": {
-            "$ref": "./examples/Operation_GetOperation.json"
+          "Get the operation result.": {
+            "$ref": "./examples/CallConnections_GetOperationResult.json"
           }
         }
       }
@@ -923,6 +945,16 @@
             "description": "Returns the add participant response.",
             "schema": {
               "$ref": "#/definitions/AddParticipantResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "operation-id": {
+                "description": "operation-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -945,7 +977,8 @@
           "Add a participant to the call.": {
             "$ref": "./examples/ServerCalls_AddParticipant.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling/participants:remove": {
@@ -1076,6 +1109,16 @@
             "description": "Returns the play audio response.",
             "schema": {
               "$ref": "#/definitions/PlayAudioResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "operation-id": {
+                "description": "operation-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -1098,7 +1141,8 @@
           "Play audio to a participant.": {
             "$ref": "./examples/ServerCalls_ParticipantPlayAudio.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling/participants:cancelMediaOperation": {
@@ -1234,6 +1278,16 @@
             "description": "Returns the add participant response.",
             "schema": {
               "$ref": "#/definitions/AddParticipantResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "operation-id": {
+                "description": "operation-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -1256,7 +1310,8 @@
           "Add a participant to the call.": {
             "$ref": "./examples/CallConnections_AddParticipant.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling/callConnections/{callConnectionId}/participants:remove": {
@@ -1408,6 +1463,16 @@
             "description": "Returns the play audio response.",
             "schema": {
               "$ref": "#/definitions/PlayAudioResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "operation-id": {
+                "description": "operation-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -1430,7 +1495,8 @@
           "Play audio to a participant.": {
             "$ref": "./examples/CallConnections_ParticipantPlayAudio.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling/callConnections/{callConnectionId}/participants:cancelMediaOperation": {
@@ -1976,6 +2042,16 @@
             "description": "Returns the join call response.",
             "schema": {
               "$ref": "#/definitions/JoinCallResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "call-connection-id": {
+                "description": "call-connection-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -1995,7 +2071,8 @@
           "Join a call.": {
             "$ref": "./examples/ServerCalls_JoinCall.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling:playAudio": {
@@ -2025,6 +2102,16 @@
             "description": "Returns the play audio response.",
             "schema": {
               "$ref": "#/definitions/PlayAudioResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "operation-id": {
+                "description": "operation-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -2047,7 +2134,8 @@
           "Play audio in the call.": {
             "$ref": "./examples/ServerCalls_PlayAudio.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling:cancelMediaOperation": {
@@ -2126,6 +2214,16 @@
             "description": "Returns the answer call response.",
             "schema": {
               "$ref": "#/definitions/AnswerCallResult"
+            },
+            "headers": {
+              "Location": {
+                "description": "Location",
+                "type": "string"
+              },
+              "call-connection-id": {
+                "description": "call-connection-id",
+                "type": "string"
+              }
             }
           },
           "400": {
@@ -2148,7 +2246,8 @@
           "Answer the call.": {
             "$ref": "./examples/ServerCalls_AnswerCall.json"
           }
-        }
+        },
+        "x-ms-long-running-operation": true
       }
     },
     "/calling:reject": {
@@ -2679,8 +2778,8 @@
         }
       }
     },
-    "OperationResponse": {
-      "description": "The base class for all the responses for any Acs Api operation",
+    "OperationResult": {
+      "description": "The result of an operation.",
       "required": [
         "status"
       ],
@@ -2770,11 +2869,25 @@
     },
     "AddParticipantResult": {
       "description": "The add participant result",
+      "required": [
+        "status"
+      ],
       "type": "object",
       "properties": {
-        "participantId": {
-          "description": "The id of the added participant.",
+        "operationId": {
+          "description": "The operation id.",
           "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/CallingOperationStatus"
+        },
+        "operationContext": {
+          "description": "The operation context provided by client.",
+          "type": "string"
+        },
+        "resultDetails": {
+          "$ref": "#/definitions/CallingOperationResultDetails",
+          "description": "The result info for the operation."
         }
       }
     },
