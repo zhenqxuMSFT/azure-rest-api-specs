@@ -1914,11 +1914,14 @@
         "tags": [
           "ServerCall"
         ],
+        "summary": "Play audio of the provided text in the call.",
+        "description": "Play audio of the provided text in the call.",
         "operationId": "ServerCalls_PlayText",
         "parameters": [
           {
             "name": "playTextRequest",
             "in": "body",
+            "description": "The play text request",
             "required": true,
             "schema": {
               "$ref": "#/definitions/PlayTextWithCallLocatorRequest"
@@ -1949,6 +1952,11 @@
           },
           "500": {
             "$ref": "#/responses/500"
+          }
+        },
+        "x-ms-examples": {
+          "Play audio of the provided text in the call.": {
+            "$ref": "./examples/ServerCalls_PlayText.json"
           }
         }
       }
