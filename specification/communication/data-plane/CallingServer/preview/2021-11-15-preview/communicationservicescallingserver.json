@@ -960,6 +960,58 @@
         }
       }
     },
+    "/calling/participants:playText": {
+      "post": {
+        "tags": [
+          "ServerCall"
+        ],
+        "summary": "Play text to a participant.",
+        "description": "Play text to a participant.",
+        "operationId": "ServerCalls_ParticipantPlayAudio",
+        "parameters": [
+          {
+            "name": "playTextToParticipantRequest",
+            "in": "body",
+            "description": "The play text to participant request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayTextToParticipantWithCallLocatorRequest"
+            }
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Returns the play text response.",
+            "schema": {
+              "$ref": "#/definitions/PlayTextResult"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        },
+        "x-ms-examples": {
+          "Play text to a participant.": {
+            "$ref": "./examples/ServerCalls_ParticipantPlayAudio.json"
+          }
+        }
+      }
+    },
     "/calling/participants:cancelMediaOperation": {
       "post": {
         "tags": [
@@ -2753,6 +2805,73 @@
         }
       }
     },
+    "PlayTextToParticipantWithCallLocatorRequest": {
+      "description": "The request payload for playing text with call locator to participant.",
+      "required": [
+        "identifier",
+        "text",
+        "callLocator"
+      ],
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "$ref": "#/definitions/CommunicationIdentifier",
+          "description": "The identifier of the participant to play audio to."
+        },
+        "text": {
+          "description": "The media resource uri of the play audio request. \r\nCurrently only Wave file (.wav) format audio prompts are supported.\r\nMore specifically, the audio content in the wave file must be mono (single-channel),\r\n16-bit samples with a 16,000 (16KHz) sampling rate.",
+          "type": "string"
+        },
+        "operationContext": {
+          "description": "The value to identify context of the operation.",
+          "type": "string"
+        },
+        "callLocator": {
+          "$ref": "#/definitions/CallLocator",
+          "description": "The call locator."
+        },
+        "callbackUri": {
+          "description": "The callback Uri to receive PlayAudio status notifications.",
+          "type": "string"
+        },
+        "sourceLocale": {
+          "type": "string"
+        },
+        "targetLocale": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "voiceName": {
+          "type": "string"
+        }
+      }
+    },
+    "PlayTextResult": {
+      "description": "The response payload for play text operation.",
+      "required": [
+        "status"
+      ],
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "description": "The operation id.",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/CallingOperationStatus"
+        },
+        "operationContext": {
+          "description": "The operation context provided by client.",
+          "type": "string"
+        },
+        "resultDetails": {
+          "$ref": "#/definitions/CallingOperationResultDetails",
+          "description": "The result info for the operation."
+        }
+      }
+    },
     "CancelParticipantMediaOperationWithCallLocatorRequest": {
       "description": "The request payload for stopping a media operation for a participant with call locator.",
       "required": [
@@ -3150,30 +3269,6 @@
         },
         "voiceName": {
           "type": "string"
-        }
-      }
-    },
-    "PlayTextResult": {
-      "description": "The response payload for play text operation.",
-      "required": [
-        "status"
-      ],
-      "type": "object",
-      "properties": {
-        "operationId": {
-          "description": "The operation id.",
-          "type": "string"
-        },
-        "status": {
-          "$ref": "#/definitions/CallingOperationStatus"
-        },
-        "operationContext": {
-          "description": "The operation context provided by client.",
-          "type": "string"
-        },
-        "resultDetails": {
-          "$ref": "#/definitions/CallingOperationResultDetails",
-          "description": "The result info for the operation."
         }
       }
     },
