@@ -967,7 +967,7 @@
         ],
         "summary": "Play text to a participant.",
         "description": "Play text to a participant.",
-        "operationId": "ServerCalls_ParticipantPlayAudio",
+        "operationId": "ServerCalls_ParticipantPlayText",
         "parameters": [
           {
             "name": "playTextToParticipantRequest",
@@ -1007,7 +1007,7 @@
         },
         "x-ms-examples": {
           "Play text to a participant.": {
-            "$ref": "./examples/ServerCalls_ParticipantPlayAudio.json"
+            "$ref": "./examples/ServerCalls_ParticipantPlayText.json"
           }
         }
       }
